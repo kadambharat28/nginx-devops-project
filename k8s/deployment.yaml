@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: nginx-devops
+  namespace: devops-projects
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: nginx-devops
+
+  template:
+    metadata:
+      labels:
+        app: nginx-devops
+
+    spec:
+      containers:
+      - name: nginx-devops
+        image: infrasupport9211/nginx-devops:v1
+
+        ports:
+        - containerPort: 80
